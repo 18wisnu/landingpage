@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  landing-page:
+    build: .
+    container_name: portal_gayatricorp
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      - web_network
+
+networks:
+  web_network:
+    name: web_network
+    driver: bridge
