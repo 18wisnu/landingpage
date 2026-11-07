@@ -6,6 +6,8 @@
     <title>Tanjungpura Network - Micro Provider & Network Solution</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Integrasi SDK Duitku Sandbox Pop -->
+    <script src="https://app-sandbox.duitku.com/lib/js/duitku.js"></script>
 </head>
 <body>
 
@@ -27,6 +29,7 @@
                 <li><a href="#fitur">Keunggulan</a></li>
                 <li><a href="#paket">Paket Internet</a></li>
                 <li><a href="#kontak">Hubungi Kami</a></li>
+                <li><a href="javascript:void(0)" onclick="openCheckout('Paket 15 Mbps', 200000, 'Paket Bulanan', 'Kecepatan Up to 15 Mbps Unlimited')" class="btn-nav-checkout">🛒 Checkout</a></li>
                 <li><a href="https://gayatricorp.mixradius.com/login" class="btn-nav" target="_blank">Portal Pelanggan</a></li>
             </ul>
         </div>
@@ -41,7 +44,7 @@
             <p>Nikmati pengalaman internet tanpa batas dengan infrastruktur jaringan handal dari Tanjungpura Network.</p>
             <div class="hero-buttons">
                 <a href="#paket" class="btn btn-primary">Lihat Paket</a>
-                <a href="#portal" class="btn btn-outline">Layanan Portal</a>
+                <button type="button" onclick="openCheckout('Paket 15 Mbps', 200000, 'Paket Bulanan', 'Kecepatan Up to 15 Mbps Unlimited')" class="btn btn-outline">🛒 Beli / Checkout</button>
             </div>
         </div>
     </header>
@@ -143,62 +146,132 @@
     <!-- Paket Harga Section (Bulanan & Hotspot) -->
     <section id="paket" class="pricing">
         <div class="section-title">
-            <span class="section-subtitle">LAYANAN KAMI</span>
-            <h2>Pilihan Paket Internet</h2>
+            <span class="section-subtitle">LAYANAN & HARGA PRODUK</span>
+            <h2>Pilihan Paket Internet & Voucher</h2>
+            <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">Pilih paket internet bulanan atau voucher hotspot sesuai kebutuhan Anda dengan harga terjangkau dalam Rupiah dan pembayaran instan via Duitku Payment Gateway.</p>
         </div>
-        <!-- (Kode Paket Bulanan dan Hotspot Anda tetap sama, saya sertakan penuh agar tidak terpotong) -->
-        <h3 class="package-category-title">Paket Bulanan (PPPoE / Home)</h3>
+
+        <h3 class="package-category-title">Paket Bulanan (PPPoE / Home Fiber)</h3>
         <div class="pricing-grid-monthly">
             <div class="pricing-card">
                 <h3>Paket 15 Mbps</h3>
                 <div class="price"><span>Rp</span>200.000<span>/bln</span></div>
                 <div class="speed">Up to 15 Mbps</div>
+                <p class="package-desc">Solusi internet rumah andal dan hemat untuk keluarga. Cocok untuk browsing harian, streaming video HD, dan media sosial lancar.</p>
                 <ul class="features-list">
-                    <li>✓ 100% Unlimited Quota</li>
-                    <li>✓ Jaringan Stabil & Cepat</li>
-                    <li>✓ Dipinjamkan Perangkat ONT</li>
+                    <li>✓ 100% Unlimited Quota (Tanpa FUP)</li>
+                    <li>✓ Kecepatan Simetris s/d 15 Mbps</li>
+                    <li>✓ Gratis Pinjam Modem ONT Fiber Optik</li>
+                    <li>✓ Ideal untuk 3 - 5 Perangkat</li>
+                    <li>✓ Bebas Biaya Sewa Perangkat</li>
+                    <li>✓ Dukungan Teknis Prioritas 24/7</li>
                 </ul>
-                <a href="#kontak" class="btn btn-outline">Daftar Sekarang</a>
+                <button type="button" class="btn btn-outline btn-block" onclick="openCheckout('Paket 15 Mbps', 200000, 'Paket Bulanan', 'Kecepatan Up to 15 Mbps Unlimited Tanpa FUP')">🛒 Pesan / Checkout</button>
             </div>
+
             <div class="pricing-card popular">
                 <div class="badge">Rekomendasi</div>
                 <h3>Paket 30 Mbps</h3>
                 <div class="price"><span>Rp</span>320.000<span>/bln</span></div>
                 <div class="speed">Up to 30 Mbps</div>
+                <p class="package-desc">Pilihan terfavorit dengan kecepatan tinggi untuk streaming 4K tanpa buffering, work from home (WFH), dan online gaming dengan latency rendah.</p>
                 <ul class="features-list">
-                    <li>✓ 100% Unlimited Quota</li>
-                    <li>✓ Cocok untuk Banyak Perangkat</li>
-                    <li>✓ Dipinjamkan Perangkat ONT</li>
+                    <li>✓ 100% Unlimited Quota (Tanpa FUP)</li>
+                    <li>✓ Kecepatan Tinggi s/d 30 Mbps</li>
+                    <li>✓ Gratis Pinjam Router Wi-Fi Fiber Optik</li>
+                    <li>✓ Optimal untuk 6 - 10 Perangkat</li>
+                    <li>✓ Latensi Rendah (Low Ping Gaming)</li>
+                    <li>✓ Technical Support 24/7</li>
                 </ul>
-                <a href="#kontak" class="btn btn-primary">Daftar Sekarang</a>
+                <button type="button" class="btn btn-primary btn-block" onclick="openCheckout('Paket 30 Mbps', 320000, 'Paket Bulanan', 'Kecepatan Up to 30 Mbps Unlimited Tanpa FUP')">🛒 Pesan / Checkout</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Paket 50 Mbps</h3>
+                <div class="price"><span>Rp</span>450.000<span>/bln</span></div>
+                <div class="speed">Up to 50 Mbps</div>
+                <p class="package-desc">Bandwidth prioritas super kencang untuk rumah besar, perkantoran, dan cafe. Menjamin koneksi tanpa hambatan untuk banyak pengguna aktif.</p>
+                <ul class="features-list">
+                    <li>✓ 100% Unlimited Quota (Tanpa FUP)</li>
+                    <li>✓ Kecepatan Ultra Fast s/d 50 Mbps</li>
+                    <li>✓ Gratis Modem ONT Gigabit Dual-Band</li>
+                    <li>✓ Mendukung 10 - 15+ Perangkat Aktif</li>
+                    <li>✓ Prioritas Bandwidth & Traffic</li>
+                    <li>✓ Garansi Service Level 99.9% Uptime</li>
+                </ul>
+                <button type="button" class="btn btn-outline btn-block" onclick="openCheckout('Paket 50 Mbps', 450000, 'Paket Bulanan', 'Kecepatan Up to 50 Mbps Ultra Fast Unlimited')">🛒 Pesan / Checkout</button>
             </div>
         </div>
 
-        <h3 class="package-category-title" style="margin-top: 50px;">Paket Hotspot (Voucher WiFi)</h3>
+        <h3 class="package-category-title" style="margin-top: 50px;">Paket Hotspot (E-Voucher WiFi)</h3>
         <div class="info-box">
-            <p><strong>⚠️ Informasi Penting:</strong> Untuk dapat membeli E-Voucher, Anda <strong>wajib terdaftar</strong> sebagai pengguna terlebih dahulu. <a href="https://gayatricorp.mixradius.com/register" target="_blank">Daftar Mandiri di sini</a>, atau isi form di bawah.</p>
+            <p><strong>💡 Pembelian E-Voucher:</strong> Pilih voucher di bawah dan lakukan pembayaran langsung melalui <strong>Duitku Sandbox</strong> (QRIS, VA, E-Wallet), atau beli mandiri di <a href="https://gayatricorp.mixradius.com/evoucher" target="_blank">Portal Mixradius</a>.</p>
         </div>
         <div class="pricing-grid-hotspot">
             <div class="pricing-card">
-                <h3>Harian</h3>
+                <h3>Voucher 1 Hari</h3>
                 <div class="price"><span>Rp</span>3.000</div>
-                <a href="https://gayatricorp.mixradius.com/evoucher" class="btn btn-outline" target="_blank">Beli Voucher</a>
+                <div class="speed">Up to 10 Mbps</div>
+                <p class="package-desc">Masa aktif 24 jam nonstop untuk 1 perangkat. Kuota unlimited tanpa batasan FUP, aktif seketika setelah bayar.</p>
+                <ul class="features-list">
+                    <li>✓ Masa Aktif 24 Jam</li>
+                    <li>✓ Speed s/d 10 Mbps</li>
+                    <li>✓ 1 Perangkat Aktif</li>
+                </ul>
+                <button type="button" class="btn btn-outline btn-sm btn-block" onclick="openCheckout('Voucher 1 Hari', 3000, 'Voucher WiFi', 'Masa aktif 24 Jam, Speed up to 10 Mbps, 1 Perangkat')">Beli via Duitku</button>
             </div>
+
             <div class="pricing-card">
-                <h3>3 Hari</h3>
+                <h3>Voucher 3 Hari</h3>
                 <div class="price"><span>Rp</span>8.000</div>
-                <a href="https://gayatricorp.mixradius.com/evoucher" class="btn btn-outline" target="_blank">Beli Voucher</a>
+                <div class="speed">Up to 10 Mbps</div>
+                <p class="package-desc">Masa aktif 72 jam (3 hari) untuk 1 perangkat. Pilihan hemat saat weekend atau liburan dengan akses internet stabil.</p>
+                <ul class="features-list">
+                    <li>✓ Masa Aktif 3 Hari (72 Jam)</li>
+                    <li>✓ Speed s/d 10 Mbps</li>
+                    <li>✓ 1 Perangkat Aktif</li>
+                </ul>
+                <button type="button" class="btn btn-outline btn-sm btn-block" onclick="openCheckout('Voucher 3 Hari', 8000, 'Voucher WiFi', 'Masa aktif 3 Hari, Speed up to 10 Mbps, 1 Perangkat')">Beli via Duitku</button>
             </div>
+
             <div class="pricing-card">
-                <h3>Mingguan</h3>
+                <h3>Voucher Mingguan</h3>
                 <div class="price"><span>Rp</span>20.000</div>
-                <a href="https://gayatricorp.mixradius.com/evoucher" class="btn btn-outline" target="_blank">Beli Voucher</a>
+                <div class="speed">Up to 15 Mbps</div>
+                <p class="package-desc">Masa aktif 7 hari penuh dengan kecepatan hingga 15 Mbps. Sangat ekonomis untuk kebutuhan tugas dan streaming sepekan.</p>
+                <ul class="features-list">
+                    <li>✓ Masa Aktif 7 Hari Penuh</li>
+                    <li>✓ Speed s/d 15 Mbps</li>
+                    <li>✓ 1 Perangkat Aktif</li>
+                </ul>
+                <button type="button" class="btn btn-outline btn-sm btn-block" onclick="openCheckout('Voucher Mingguan (7 Hari)', 20000, 'Voucher WiFi', 'Masa aktif 7 Hari, Speed up to 15 Mbps, 1 Perangkat')">Beli via Duitku</button>
             </div>
+
+            <div class="pricing-card">
+                <h3>Voucher 1 Bulan (1 HP)</h3>
+                <div class="price"><span>Rp</span>60.000</div>
+                <div class="speed">Up to 15 Mbps</div>
+                <p class="package-desc">Masa aktif 30 hari penuh khusus 1 perangkat smartphone/laptop pribadi. Bebas kuota bulanan praktis tanpa pasang kabel.</p>
+                <ul class="features-list">
+                    <li>✓ Masa Aktif 30 Hari</li>
+                    <li>✓ Speed s/d 15 Mbps</li>
+                    <li>✓ 1 Perangkat Personal</li>
+                </ul>
+                <button type="button" class="btn btn-outline btn-sm btn-block" onclick="openCheckout('Voucher 1 Bulan (1 HP)', 60000, 'Voucher WiFi', 'Masa aktif 30 Hari, Speed up to 15 Mbps, 1 Perangkat')">Beli via Duitku</button>
+            </div>
+
             <div class="pricing-card popular">
-                <div class="badge">Hemat</div>
-                <h3>1 Bulan (5 HP)</h3>
+                <div class="badge">Hemat & Favorit</div>
+                <h3>Voucher 1 Bulan (5 HP)</h3>
                 <div class="price"><span>Rp</span>200.000</div>
-                <a href="https://gayatricorp.mixradius.com/evoucher" class="btn btn-primary" target="_blank">Beli Voucher</a>
+                <div class="speed">Up to 20 Mbps</div>
+                <p class="package-desc">Masa aktif 30 hari penuh dengan kecepatan kencang hingga 20 Mbps. Mendukung hingga 5 perangkat sekaligus, pas untuk keluarga & kos.</p>
+                <ul class="features-list">
+                    <li>✓ Masa Aktif 30 Hari</li>
+                    <li>✓ Speed s/d 20 Mbps</li>
+                    <li>✓ Mendukung 5 Perangkat Bersamaan</li>
+                </ul>
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="openCheckout('Voucher 1 Bulan (5 HP)', 200000, 'Voucher WiFi', 'Masa aktif 30 Hari, Speed up to 20 Mbps, Multi 5 HP')">Beli via Duitku</button>
             </div>
         </div>
     </section>
@@ -249,40 +322,42 @@
     <!-- Contact & Form Section -->
     <section id="kontak" class="contact-section">
         <div class="section-title">
-            <span class="section-subtitle">HUBUNGI KAMI</span>
-            <h2>Siap Terhubung?</h2>
-            <p style="color: var(--text-muted);">Punya pertanyaan atau ingin berlangganan? Jangan ragu untuk menghubungi kami.</p>
+            <span class="section-subtitle">KONTAK SUPPORT & LAYANAN PELANGGAN</span>
+            <h2>Hubungi Tim Support Kami</h2>
+            <p style="color: var(--text-muted);">Layanan pelanggan dan bantuan teknis Tanjungpura Network siap melayani Anda melalui email, telepon, WhatsApp, dan kunjungan kantor.</p>
         </div>
         
         <div class="contact-grid">
-            <!-- Info Kiri -->
+            <!-- Info Kiri: Email, Telepon, dan Alamat Usaha Kontak Support -->
             <div class="contact-info">
                 <div class="info-card">
-                    <div class="info-icon text-cyan">💬</div>
+                    <div class="info-icon text-cyan">✉️</div>
                     <div>
-                        <p class="info-label">WhatsApp</p>
-                        <h4>+62 858-6240-9576</h4>
+                        <p class="info-label">Email Support Resmi</p>
+                        <h4><a href="mailto:support@tanjungpuranet.itturbo.my.id" style="color: var(--cyan); text-decoration: none;">support@tanjungpuranet.itturbo.my.id</a></h4>
+                        <span style="font-size: 0.82rem; color: var(--text-muted); display: block; margin-top: 2px;">admin@tanjungpuranet.itturbo.my.id</span>
                     </div>
                 </div>
                 <div class="info-card">
                     <div class="info-icon text-cyan">📞</div>
                     <div>
-                        <p class="info-label">Telepon</p>
-                        <h4>+62 813-4743-0125</h4>
+                        <p class="info-label">Nomor Telepon Support / Hotline</p>
+                        <h4><a href="tel:+6281347430125" style="color: var(--text-light); text-decoration: none;">+62 813-4743-0125</a></h4>
+                        <span style="font-size: 0.82rem; color: var(--text-muted); display: block; margin-top: 2px;">WhatsApp CS: +62 858-6240-9576</span>
                     </div>
                 </div>
                 <div class="info-card">
-                    <div class="info-icon text-cyan">📍</div>
+                    <div class="info-icon text-cyan">🏢</div>
                     <div>
-                        <p class="info-label">Alamat</p>
-                        <h4>Pontianak, Kalimantan Barat</h4>
+                        <p class="info-label">Alamat Usaha & Operasional</p>
+                        <h4 style="font-size: 0.95rem; line-height: 1.4;">Jl. Tanjungpura No. 88, Kel. Benua Melayu Laut, Kec. Pontianak Selatan, Kota Pontianak, Kalimantan Barat 78122, Indonesia</h4>
                     </div>
                 </div>
                 <div class="info-card op-hours">
-                    <h4>🕒 Jam Operasional CS</h4>
-                    <div class="hours-row"><span>Senin - Jumat</span> <span>08:00 - 21:00</span></div>
-                    <div class="hours-row"><span>Sabtu - Minggu</span> <span>09:00 - 18:00</span></div>
-                    <div class="hours-row"><span>Emergency Line</span> <span class="text-gold">24/7</span></div>
+                    <h4>🕒 Jam Operasional Dukungan Support</h4>
+                    <div class="hours-row"><span>Customer Support (Senin - Minggu)</span> <span>08:00 - 21:00 WIB</span></div>
+                    <div class="hours-row"><span>Technical Emergency NOC</span> <span class="text-gold">24 Jam / 7 Hari</span></div>
+                    <div class="hours-row"><span>Response Time Online</span> <span class="text-cyan">&lt; 15 Menit</span></div>
                 </div>
             </div>
 
@@ -308,9 +383,11 @@
                         <label>Paket yang Diminati</label>
                         <select id="paketpilihan" class="form-control">
                             <option value="Hanya Bertanya">-- Pilih Paket / Tanya Saja --</option>
+                            <option value="Pasang Bulanan 15 Mbps (Rp 200.000/bln)">Pasang Bulanan 15 Mbps (Rp 200.000/bln)</option>
+                            <option value="Pasang Bulanan 30 Mbps (Rp 320.000/bln)">Pasang Bulanan 30 Mbps (Rp 320.000/bln)</option>
+                            <option value="Pasang Bulanan 50 Mbps (Rp 450.000/bln)">Pasang Bulanan 50 Mbps (Rp 450.000/bln)</option>
+                            <option value="Beli E-Voucher WiFi Hotspot">Beli E-Voucher WiFi Hotspot</option>
                             <option value="Daftar Akun Voucher">Daftar Akun Voucher</option>
-                            <option value="Pasang Bulanan 15 Mbps">Pasang Bulanan 15 Mbps</option>
-                            <option value="Pasang Bulanan 30 Mbps">Pasang Bulanan 30 Mbps</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -360,36 +437,431 @@
             <div class="footer-brand">
                 <h2 style="color: var(--text-light); margin-bottom: 15px;">Tanjungpura <span class="text-cyan">Net</span></h2>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Penyedia layanan internet handal & terpercaya di area Pontianak dan sekitarnya. Micro Provider & Network Solution.</p>
+                <div style="margin-top: 12px;">
+                    <span class="badge-sandbox">⚡ Integrated with Duitku Sandbox</span>
+                </div>
             </div>
             <div class="footer-links">
                 <h3>Layanan</h3>
                 <ul>
-                    <li><a href="#paket">Paket Internet</a></li>
-                    <li><a href="#fitur">Keunggulan</a></li>
-                    <li><a href="https://gayatricorp.mixradius.com/evoucher">Beli E-Voucher</a></li>
+                    <li><a href="#paket">Paket Internet Bulanan</a></li>
+                    <li><a href="#paket">E-Voucher WiFi Hotspot</a></li>
+                    <li><a href="#fitur">Keunggulan Layanan</a></li>
+                    <li><a href="javascript:void(0)" onclick="openCheckout('Paket 15 Mbps', 200000, 'Paket Bulanan', 'Kecepatan Up to 15 Mbps Unlimited')">Checkout Pembelian</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Bantuan</h3>
+                <h3>Bantuan & Sistem</h3>
                 <ul>
-                    <li><a href="https://gayatricorp.mixradius.com/login">Client Portal</a></li>
-                    <li><a href="#kontak">Hubungi Kami</a></li>
-                    <li><a href="#cara-berlangganan">Cara Berlangganan</a></li>
+                    <li><a href="https://gayatricorp.mixradius.com/login" target="_blank">Client Portal Web</a></li>
+                    <li><a href="#kontak">Hubungi Tim Support</a></li>
+                    <li><a href="#fitur">Cara Berlangganan</a></li>
+                    <li class="admin-only-el" style="display:none;"><a href="javascript:void(0)" onclick="openSettingsModal()">⚙️ Pengaturan API & Gateway</a></li>
+                    <li><a href="javascript:void(0)" onclick="openAdminLogin()" id="footerAdminLink">🔐 Admin Login</a></li>
                 </ul>
             </div>
             <div class="footer-links">
-                <h3>Kontak</h3>
+                <h3>Kontak Support</h3>
                 <ul style="color: var(--text-muted); font-size: 0.9rem;">
-                    <li style="margin-bottom: 10px;">📍 Pontianak, Kalimantan Barat</li>
-                    <li style="margin-bottom: 10px;">📞 +62 812-3456-7890</li>
-                    <li>✉️ admin@tanjungpuranet.com</li>
+                    <li style="margin-bottom: 10px;">🏢 Jl. Tanjungpura No. 88, Benua Melayu Laut, Kec. Pontianak Selatan, Kota Pontianak, Kalimantan Barat 78122</li>
+                    <li style="margin-bottom: 10px;">📞 <a href="tel:+6281347430125" style="color: inherit; text-decoration: none;">+62 813-4743-0125</a> / +62 858-6240-9576</li>
+                    <li>✉️ <a href="mailto:support@tanjungpuranet.itturbo.my.id" style="color: var(--cyan); text-decoration: none;">support@tanjungpuranet.itturbo.my.id</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Tanjungpura Network. All rights reserved.</p>
+            <p>&copy; 2026 Tanjungpura Network. All rights reserved. Terdaftar di https://tanjungpuranet.itturbo.my.id/</p>
         </div>
     </footer>
+
+    <!-- ========================================== -->
+    <!-- MODAL CHECKOUT & PEMBAYARAN DUITKU SANDBOX -->
+    <!-- ========================================== -->
+    <div id="checkoutModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div>
+                    <h3 id="checkoutModalTitle">🛒 Form Pembelian & Checkout</h3>
+                    <span class="badge-sandbox">⚡ Duitku Sandbox Gateway</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeCheckout()" aria-label="Tutup Modal">&times;</button>
+            </div>
+
+            <!-- Ringkasan Produk Terpilih -->
+            <div class="order-summary-box">
+                <div class="summary-row">
+                    <span>Produk / Paket:</span>
+                    <strong id="summaryProductName" style="color: var(--text-light);">Paket 15 Mbps</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Kategori / Spesifikasi:</span>
+                    <span id="summaryProductDesc" style="color: var(--cyan); font-size: 0.82rem;">Kecepatan up to 15 Mbps Unlimited</span>
+                </div>
+                <div class="summary-row">
+                    <span>Biaya Layanan:</span>
+                    <span style="color: #10b981;">Rp 0 (Gratis)</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total Pembayaran (IDR):</span>
+                    <span class="price-highlight" id="summaryProductPrice">Rp 200.000</span>
+                </div>
+            </div>
+
+            <!-- Form Data Pembeli & Pembayaran -->
+            <form id="checkoutForm">
+                <input type="hidden" id="checkoutPackageName" value="Paket 15 Mbps">
+                <input type="hidden" id="checkoutPackagePrice" value="200000">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="custName">Nama Lengkap *</label>
+                        <input type="text" id="custName" class="form-control" required placeholder="Contoh: Budi Santoso">
+                    </div>
+                    <div class="form-group">
+                        <label for="custPhone">No. WhatsApp / HP *</label>
+                        <input type="tel" id="custPhone" class="form-control" required placeholder="Contoh: 085862409576">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="custEmail">Alamat Email * (Untuk Pengiriman Bukti / Token)</label>
+                    <input type="email" id="custEmail" class="form-control" required placeholder="nama@email.com">
+                </div>
+
+                <div class="form-group" id="groupCustAddress">
+                    <label for="custAddress">Alamat Pemasangan / Lokasi</label>
+                    <input type="text" id="custAddress" class="form-control" placeholder="Jl. Tanjungpura, Pontianak">
+                </div>
+
+                <div class="form-group">
+                    <label>Pilih Metode Pembayaran Duitku Sandbox:</label>
+                    <div class="payment-methods-grid">
+                        <label class="payment-method-item active">
+                            <input type="radio" name="paymentChannel" value="SP" checked>
+                            <div class="payment-method-icon">📱</div>
+                            <div class="payment-method-name">QRIS</div>
+                            <div class="payment-method-sub">Instant Scan</div>
+                        </label>
+                        <label class="payment-method-item">
+                            <input type="radio" name="paymentChannel" value="B1">
+                            <div class="payment-method-icon">🏦</div>
+                            <div class="payment-method-name">BCA VA</div>
+                            <div class="payment-method-sub">Virtual Account</div>
+                        </label>
+                        <label class="payment-method-item">
+                            <input type="radio" name="paymentChannel" value="BR">
+                            <div class="payment-method-icon">🏦</div>
+                            <div class="payment-method-name">BRI VA</div>
+                            <div class="payment-method-sub">Virtual Account</div>
+                        </label>
+                        <label class="payment-method-item">
+                            <input type="radio" name="paymentChannel" value="M1">
+                            <div class="payment-method-icon">🏦</div>
+                            <div class="payment-method-name">Mandiri VA</div>
+                            <div class="payment-method-sub">Virtual Account</div>
+                        </label>
+                        <label class="payment-method-item">
+                            <input type="radio" name="paymentChannel" value="I1">
+                            <div class="payment-method-icon">🏦</div>
+                            <div class="payment-method-name">BNI VA</div>
+                            <div class="payment-method-sub">Virtual Account</div>
+                        </label>
+                        <label class="payment-method-item">
+                            <input type="radio" name="paymentChannel" value="FT">
+                            <div class="payment-method-icon">🏪</div>
+                            <div class="payment-method-name">Retail</div>
+                            <div class="payment-method-sub">Alfamart / Indo</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="duitku-security-notice">
+                    <span>🛡️</span>
+                    <span>Transaksi Sandbox Duitku aman dan terenkripsi. Tidak mendebit uang asli selama pengujian.</span>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <button type="submit" id="btnSubmitCheckout" class="btn btn-primary btn-block">
+                        💳 Bayar Sekarang via Duitku Sandbox
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL SIMULASI PEMBAYARAN & INVOICE DUITKU     -->
+    <!-- ============================================== -->
+    <div id="duitkuSimModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="simModalTitle">
+        <div class="modal-container" style="max-width: 520px;">
+            <div class="modal-header">
+                <div>
+                    <h3 id="simModalTitle">💳 Instruksi Pembayaran Duitku</h3>
+                    <span class="badge-sandbox">Sandbox Environment</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeSimModal()">&times;</button>
+            </div>
+
+            <div id="simPendingView">
+                <div class="simulator-box">
+                    <span class="timer-badge">⏱️ Menunggu Pembayaran: <span id="simCountdown">59:59</span></span>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px;">Nomor Invoice:</p>
+                    <strong id="simOrderId" style="color: var(--text-light); font-size: 1.1rem; letter-spacing: 1px;">INV-20261022-001</strong>
+
+                    <div id="simQRView" style="margin-top: 15px;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Pindai Kode QRIS Sandbox di bawah:</p>
+                        <div class="qr-code-placeholder">
+                            <svg viewBox="0 0 100 100" width="160" height="160">
+                                <rect width="100" height="100" fill="#ffffff" />
+                                <rect x="10" y="10" width="25" height="25" fill="#000000" />
+                                <rect x="15" y="15" width="15" height="15" fill="#ffffff" />
+                                <rect x="18" y="18" width="9" height="9" fill="#000000" />
+                                <rect x="65" y="10" width="25" height="25" fill="#000000" />
+                                <rect x="70" y="15" width="15" height="15" fill="#ffffff" />
+                                <rect x="73" y="18" width="9" height="9" fill="#000000" />
+                                <rect x="10" y="65" width="25" height="25" fill="#000000" />
+                                <rect x="15" y="70" width="15" height="15" fill="#ffffff" />
+                                <rect x="18" y="73" width="9" height="9" fill="#000000" />
+                                <rect x="42" y="15" width="6" height="6" fill="#000000" />
+                                <rect x="52" y="25" width="6" height="6" fill="#000000" />
+                                <rect x="42" y="42" width="16" height="16" fill="#14b8d4" />
+                                <rect x="65" y="45" width="8" height="8" fill="#000000" />
+                                <rect x="25" y="45" width="8" height="8" fill="#000000" />
+                                <rect x="45" y="65" width="10" height="10" fill="#000000" />
+                                <rect x="65" y="65" width="20" height="10" fill="#000000" />
+                                <rect x="75" y="80" width="15" height="10" fill="#000000" />
+                            </svg>
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--cyan); font-weight: 700;">QRIS Bersama - Sandbox Duitku</span>
+                    </div>
+
+                    <div id="simVAView" class="va-box" style="display: none;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);" id="simChannelLabel">Nomor Virtual Account:</span>
+                        <div class="va-number" id="simVaNumber">8962 0858 6240 9576</div>
+                        <button type="button" class="copy-btn" onclick="copyVaNumber()">📋 Salin Nomor VA</button>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; margin-top: 15px; text-align: left; font-size: 0.85rem;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom: 5px;">
+                            <span style="color:var(--text-muted);">Total Tagihan:</span>
+                            <strong style="color:var(--cyan); font-size: 1rem;" id="simTotalAmount">Rp 200.000</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <span style="color:var(--text-muted);">Nama Pembeli:</span>
+                            <span style="color:var(--text-light);" id="simBuyerName">Budi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="closeSimModal()">Tutup</button>
+                    <button type="button" class="btn btn-primary" style="flex: 2;" onclick="simulateSuccessPayment()">
+                        ⚡ Simulasi Bayar Berhasil (Sandbox)
+                    </button>
+                </div>
+            </div>
+
+            <!-- View Berhasil / Receipt -->
+            <div id="simSuccessView" style="display: none; text-align: center; padding: 10px 0;">
+                <div style="width: 70px; height: 70px; margin: 0 auto 15px; background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #10b981;">
+                    ✓
+                </div>
+                <h3 style="color: var(--text-light); margin-bottom: 5px;">Pembayaran Berhasil!</h3>
+                <p style="color: #6ee7b7; font-size: 0.88rem; margin-bottom: 20px;">Transaksi Duitku Sandbox telah berhasil diverifikasi secara real-time.</p>
+
+                <div style="background: var(--bg-main); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: left; font-size: 0.88rem; margin-bottom: 20px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                        <span style="color: var(--text-muted);">Status Transaksi:</span>
+                        <strong style="color: #10b981;">LUNAS (PAID)</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                        <span style="color: var(--text-muted);">No. Referensi:</span>
+                        <span style="color: var(--text-light);" id="receiptRef">TPR-SBX-998811</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                        <span style="color: var(--text-muted);">Paket:</span>
+                        <span style="color: var(--cyan);" id="receiptProduct">Paket 15 Mbps</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                        <span style="color: var(--text-muted);">Total Bayar:</span>
+                        <strong style="color: var(--text-light);" id="receiptAmount">Rp 200.000</strong>
+                    </div>
+                    <div id="receiptVoucherBox" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border); text-align: center;">
+                        <span style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-bottom: 4px;">Kode Voucher Hotspot Anda:</span>
+                        <div style="background: rgba(20, 184, 212, 0.15); border: 1px dashed var(--cyan); padding: 8px; border-radius: 6px; font-weight: 800; font-size: 1.15rem; color: var(--cyan); letter-spacing: 2px;" id="receiptVoucherCode">
+                            TPR-VCH-84920
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block" onclick="closeSimModal()">Selesai & Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL PENGATURAN API & KONFIGURASI SISTEM      -->
+    <!-- ============================================== -->
+    <div id="settingsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
+        <div class="modal-container" style="max-width: 650px;">
+            <div class="modal-header">
+                <div>
+                    <h3 id="settingsModalTitle">⚙️ Pengaturan API & Gateway</h3>
+                    <span class="badge-sandbox">Sistem Konfigurasi Tanjungpura Net</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeSettingsModal()" aria-label="Tutup Modal">&times;</button>
+            </div>
+
+            <form id="settingsForm">
+                <!-- Bagian 1: Duitku API Gateway -->
+                <div class="settings-section-title">
+                    <span>💳</span>
+                    <span>Konfigurasi Payment Gateway Duitku</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="setEnvironment">Mode Lingkungan (Environment) *</label>
+                        <select id="setEnvironment" class="form-control">
+                            <option value="sandbox">Sandbox (Mode Uji Coba)</option>
+                            <option value="production">Production (Live / Transaksi Asli)</option>
+                        </select>
+                        <span class="form-hint">Gunakan Sandbox untuk review dan pengetesan.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="setMerchantCode">Duitku Merchant Code *</label>
+                        <input type="text" id="setMerchantCode" class="form-control" required placeholder="Contoh: D12345">
+                        <span class="form-hint">Dapat dilihat di Dashboard Duitku &gt; Proyek Saya.</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="setApiKey">Duitku API Key / Project Key *</label>
+                    <div style="position: relative;">
+                        <input type="password" id="setApiKey" class="form-control" required placeholder="Masukkan Merchant Project Key Duitku" style="padding-right: 45px;">
+                        <button type="button" onclick="toggleApiKeyVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem;" title="Lihat/Sembunyikan API Key">👁️</button>
+                    </div>
+                    <span class="form-hint">Key rahasia untuk otentikasi signature request transaksi.</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="setCallbackUrl">URL Callback (IPN Notifikasi)</label>
+                        <input type="url" id="setCallbackUrl" class="form-control" placeholder="https://tanjungpuranet.itturbo.my.id/callback.php">
+                        <span class="form-hint">Webhook penerima notifikasi status bayar otomatis.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="setReturnUrl">URL Return (Kembali ke Web)</label>
+                        <input type="url" id="setReturnUrl" class="form-control" placeholder="https://tanjungpuranet.itturbo.my.id/#paket">
+                        <span class="form-hint">Halaman tujuan saat pembeli selesai membayar.</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+                    <button type="button" id="btnTestDuitku" class="btn-test" onclick="testDuitkuApi()">
+                        🧪 Tes Koneksi API Duitku
+                    </button>
+                    <span id="testLoadingText" style="display: none; font-size: 0.8rem; color: var(--cyan);">⏳ Memeriksa ke server Duitku...</span>
+                </div>
+
+                <div id="testAlertBox" class="alert-box"></div>
+
+                <!-- Bagian 2: Informasi Kontak Support & Usaha -->
+                <div class="settings-section-title" style="margin-top: 25px;">
+                    <span>📞</span>
+                    <span>Informasi Kontak Support & Usaha</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="setAdminWa">Nomor WhatsApp Admin (Kode Negara) *</label>
+                        <input type="text" id="setAdminWa" class="form-control" required placeholder="Contoh: 6285862409576">
+                        <span class="form-hint">Gunakan awalan 62 tanpa spasi atau tanda +.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="setSupportPhone">Nomor Telepon Hotline / CS *</label>
+                        <input type="text" id="setSupportPhone" class="form-control" required placeholder="Contoh: +62 813-4743-0125">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="setSupportEmail">Email Support Resmi *</label>
+                    <input type="email" id="setSupportEmail" class="form-control" required placeholder="support@tanjungpuranet.itturbo.my.id">
+                </div>
+
+                <div class="form-group">
+                    <label for="setBusinessAddress">Alamat Lengkap Usaha *</label>
+                    <textarea id="setBusinessAddress" class="form-control" rows="2" required placeholder="Jl. Tanjungpura No. 88, Kota Pontianak, Kalimantan Barat"></textarea>
+                </div>
+
+                <div id="settingsFeedback" class="alert-box alert-success" style="margin-bottom: 15px;"></div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="closeSettingsModal()">Batal</button>
+                    <button type="submit" id="btnSaveSettings" class="btn btn-primary" style="flex: 2;">
+                        💾 Simpan Pengaturan API & Sistem
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL LOGIN ADMIN                              -->
+    <!-- ============================================== -->
+    <div id="adminLoginModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+        <div class="modal-container" style="max-width: 420px;">
+            <div class="modal-header">
+                <div>
+                    <h3 id="adminLoginTitle">🔐 Admin Login</h3>
+                    <span class="badge-sandbox">Area Terbatas - Hanya Admin</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeAdminLogin()" aria-label="Tutup Modal">&times;</button>
+            </div>
+
+            <div class="admin-login-info">
+                <span>🛡️</span>
+                <span>Halaman pengaturan API, konfigurasi gateway, dan manajemen sistem hanya dapat diakses oleh akun administrator.</span>
+            </div>
+
+            <form id="adminLoginForm" onsubmit="return handleAdminLogin(event)">
+                <div class="form-group">
+                    <label for="adminEmail">Email Admin *</label>
+                    <input type="email" id="adminEmail" class="form-control" required placeholder="admin@tanjungpuranet.itturbo.my.id" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password *</label>
+                    <div style="position: relative;">
+                        <input type="password" id="adminPassword" class="form-control" required placeholder="Masukkan password admin" style="padding-right: 45px;" autocomplete="current-password">
+                        <button type="button" onclick="toggleAdminPassVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem;" title="Lihat/Sembunyikan Password">👁️</button>
+                    </div>
+                </div>
+
+                <div id="adminLoginFeedback" class="alert-box" style="margin-bottom: 15px;"></div>
+
+                <button type="submit" id="btnAdminLogin" class="btn btn-primary btn-block" style="width: 100%;">
+                    🔓 Masuk Sebagai Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Floating Action Button (Hidden by default) -->
+    <div id="adminFab" class="admin-fab admin-only-el" style="display: none;" title="Admin Panel">
+        <button type="button" class="admin-fab-btn" onclick="toggleAdminMenu()">
+            ⚙️
+        </button>
+        <div id="adminFabMenu" class="admin-fab-menu">
+            <button type="button" onclick="openSettingsModal(); toggleAdminMenu();">💳 Pengaturan API & Gateway</button>
+            <button type="button" onclick="handleAdminLogout()">🚪 Logout Admin</button>
+        </div>
+    </div>
+
+    <!-- Admin Bar Notification (shown when logged in) -->
+    <div id="adminBar" class="admin-bar admin-only-el" style="display: none;">
+        <span>🔒 Mode Admin Aktif — <strong id="adminBarEmail">admin</strong></span>
+        <button type="button" onclick="handleAdminLogout()">Logout</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
