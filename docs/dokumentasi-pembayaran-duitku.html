@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Dokumentasi Checkout & Pembayaran Duitku — Tanjungpura Network</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1f2933; font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  h1 { font-size: 22pt; margin: 0 0 6px; color: #0b3d5c; }
+  h2 { font-size: 14.5pt; color: #0b3d5c; border-bottom: 2px solid #14b8d4; padding-bottom: 4px; margin: 26px 0 10px; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 16px 0 6px; color: #12344d; page-break-after: avoid; }
+  p { margin: 0 0 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 9.8pt; page-break-inside: avoid; }
+  th, td { border: 1px solid #cfd8e3; padding: 6px 8px; text-align: left; vertical-align: top; }
+  th { background: #eaf6fa; color: #0b3d5c; }
+  code { font-family: Consolas, monospace; font-size: 9.3pt; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+  .cover { border-left: 6px solid #14b8d4; padding: 10px 0 10px 18px; margin-bottom: 18px; }
+  .muted { color: #64748b; font-size: 9.5pt; }
+  .meta td { border: none; padding: 2px 10px 2px 0; }
+  .ok { color: #047857; font-weight: 700; }
+  .warn { color: #b45309; font-weight: 700; }
+  .box { border: 1px solid #cfd8e3; border-radius: 6px; padding: 10px 12px; margin: 10px 0; page-break-inside: avoid; }
+  .box.note { background: #fffbeb; border-color: #f2d48a; }
+  .box.info { background: #f0f9ff; border-color: #a5d8ef; }
+  figure { margin: 10px 0 14px; page-break-inside: avoid; text-align: center; }
+  figure img { max-width: 100%; max-height: 92mm; border: 1px solid #cfd8e3; border-radius: 4px; }
+  figcaption { font-size: 8.8pt; color: #64748b; margin-top: 4px; }
+  ol.steps { padding-left: 20px; margin: 6px 0 10px; }
+  ol.steps li { margin-bottom: 4px; }
+  .flow { width: 100%; margin: 6px 0 4px; }
+  .pb { page-break-before: always; }
+  .email { white-space: pre-wrap; font-family: "Segoe UI", Arial, sans-serif; font-size: 10pt; background: #f8fafc; border: 1px solid #cfd8e3; border-radius: 6px; padding: 12px 14px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Dokumentasi Checkout &amp; Pembayaran</h1>
+  <div style="font-size:13pt; color:#12344d; font-weight:600;">Tanjungpura Network — Integrasi Duitku Payment Gateway</div>
+  <table class="meta" style="margin-top:10px; width:auto;">
+    <tr><td class="muted">Akun Duitku</td><td>wisnu18plus@gmail.com</td></tr>
+    <tr><td class="muted">Kode Merchant (Sandbox)</td><td><code>DS36312</code> — Proyek "Tanjungpura Net"</td></tr>
+    <tr><td class="muted">Website terdaftar</td><td>https://tanjungpuranet.itturbo.my.id</td></tr>
+    <tr><td class="muted">Sistem transaksi</td><td>https://gayatricorp.mixradius.com (Portal Pelanggan)</td></tr>
+    <tr><td class="muted">Tanggal dokumen</td><td>10 November 2026</td></tr>
+  </table>
+</div>
+
+<h2>1. Ringkasan</h2>
+<p>Tanjungpura Network adalah penyedia layanan internet (micro ISP) di Kota Pontianak yang menjual <strong>paket internet bulanan (fiber/PPPoE)</strong> dan <strong>voucher WiFi hotspot</strong>.</p>
+<p>Website terdaftar <strong>tanjungpuranet.itturbo.my.id</strong> adalah <strong>landing page</strong> (etalase): menampilkan produk, harga dalam Rupiah, kontak support, dan kebijakan. Proses <strong>checkout dan pembayaran</strong> dilakukan di <strong>Portal Pelanggan</strong> kami di <strong>gayatricorp.mixradius.com</strong>, sistem billing ISP (Mixradius) yang terintegrasi langsung dengan <strong>Duitku</strong> menggunakan akun merchant kami (<code>DS36312</code>). Setiap tombol "Beli" dan "Bayar" di landing page mengarah ke portal tersebut.</p>
+
+<h3>Arsitektur alur pembayaran</h3>
+<svg class="flow" viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial" font-size="11">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0b3d5c"/></marker></defs>
+  <g fill="#eaf6fa" stroke="#14b8d4" stroke-width="1.5">
+    <rect x="5" y="20" width="150" height="62" rx="8"/>
+    <rect x="195" y="20" width="160" height="62" rx="8"/>
+    <rect x="395" y="20" width="150" height="62" rx="8"/>
+    <rect x="585" y="20" width="130" height="62" rx="8"/>
+  </g>
+  <g fill="#0b3d5c" text-anchor="middle">
+    <text x="80" y="42" font-weight="700">Landing Page</text><text x="80" y="58">tanjungpuranet</text><text x="80" y="72">.itturbo.my.id</text>
+    <text x="275" y="42" font-weight="700">Portal Pelanggan</text><text x="275" y="58">gayatricorp.mixradius.com</text><text x="275" y="72">/evoucher · /login</text>
+    <text x="470" y="42" font-weight="700">Duitku POP</text><text x="470" y="58">QRIS · VA · E-Wallet</text><text x="470" y="72">· Retail</text>
+    <text x="650" y="42" font-weight="700">Pelanggan</text><text x="650" y="58">Voucher / layanan</text><text x="650" y="72">aktif</text>
+  </g>
+  <g stroke="#0b3d5c" stroke-width="1.5" marker-end="url(#a)">
+    <line x1="155" y1="51" x2="192" y2="51"/>
+    <line x1="355" y1="45" x2="392" y2="45"/>
+    <line x1="545" y1="51" x2="582" y2="51"/>
+  </g>
+  <path d="M470,82 C470,125 275,125 275,86" fill="none" stroke="#047857" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a)"/>
+  <text x="372" y="140" text-anchor="middle" fill="#047857">Callback Duitku → Mixradius: status lunas, voucher dibuat / invoice lunas</text>
+  <text x="173" y="14" text-anchor="middle" fill="#64748b" font-size="9.5">klik Beli / Bayar</text>
+  <text x="374" y="14" text-anchor="middle" fill="#64748b" font-size="9.5">createInvoice</text>
+</svg>
+
+<h2>2. Tanggapan atas Permintaan Verifikasi Duitku</h2>
+<table>
+  <tr><th style="width:4%">#</th><th style="width:38%">Permintaan Duitku</th><th>Pemenuhan</th></tr>
+  <tr><td>1</td><td>Mengaktifkan website terdaftar</td><td>Website https://tanjungpuranet.itturbo.my.id aktif dan dapat diakses publik (HTTPS).</td></tr>
+  <tr><td>2</td><td>Konten produk beserta deskripsi dan harga (Rupiah) di halaman utama</td><td>Bagian <em>"Pilihan Paket Internet &amp; Voucher"</em> (#paket) menampilkan semua produk dengan deskripsi dan harga Rupiah, sama dengan produk yang dijual di Portal Pelanggan (lihat bagian 3).</td></tr>
+  <tr><td>3</td><td>Email, nomor telepon, dan alamat usaha sebagai kontak support di halaman utama</td><td>Bagian <em>"Hubungi Tim Support Kami"</em> (#kontak) dan footer: email smartplayground777@gmail.com, telepon +62 813-4743-0125, WhatsApp +62 858-6240-9576, alamat Jl. Tanjungpura No. 88, Kel. Benua Melayu Laut, Kec. Pontianak Selatan, Kota Pontianak, Kalimantan Barat 78122.</td></tr>
+  <tr><td>4</td><td>Fitur checkout/pembelian hingga pembayaran</td><td>Tombol <em>Beli Voucher</em>, <em>Daftar &amp; Berlangganan</em>, dan <em>Bayar Tagihan</em> mengarah ke Portal Pelanggan, tempat pembeli mengisi data, checkout, dan membayar melalui Duitku. Bagian <em>"Cara Membeli &amp; Membayar"</em> (#cara-bayar) menjelaskan langkahnya (lihat bagian 4–5).</td></tr>
+  <tr><td>5</td><td>Integrasi dengan Sandbox Duitku</td><td>Portal Pelanggan terhubung ke Duitku <strong>Sandbox</strong> dengan kode merchant <code>DS36312</code> sebagai gateway utama. Callback: <code>https://gayatricorp.mixradius.com/api/payment/callback/duitku</code>. Bukti uji transaksi ada di bagian 7.</td></tr>
+</table>
+
+<h2 class="pb">3. Produk &amp; Harga</h2>
+<p>Harga di landing page sama dengan produk aktif di Portal Pelanggan untuk penjual <strong>Tanjungpura Network</strong>. Semua harga dalam Rupiah (IDR) dan tanpa biaya tambahan dari kami.</p>
+<table>
+  <tr><th>Produk</th><th>Jenis</th><th>Spesifikasi</th><th>Harga</th><th>Dibeli melalui</th></tr>
+  <tr><td>Bulanan 20 Mbps</td><td>Internet rumah (PPPoE / fiber)</td><td>s/d 20 Mbps, kuota unlimited, masa berlaku 1 bulan</td><td><strong>Rp 200.000</strong> / bulan</td><td>/register lalu invoice di /login</td></tr>
+  <tr><td>Bulanan 35 Mbps</td><td>Internet rumah (PPPoE / fiber)</td><td>s/d 35 Mbps, kuota unlimited, masa berlaku 1 bulan</td><td><strong>Rp 320.000</strong> / bulan</td><td>/register lalu invoice di /login</td></tr>
+  <tr><td>Voucher HS-3K</td><td>Voucher WiFi hotspot</td><td>Masa aktif 1 hari, s/d 5 Mbps, unlimited, 1 perangkat</td><td><strong>Rp 3.000</strong></td><td>/evoucher</td></tr>
+  <tr><td>Voucher HS-3D</td><td>Voucher WiFi hotspot</td><td>Masa aktif 3 hari, s/d 5 Mbps, unlimited, 1 perangkat</td><td><strong>Rp 8.000</strong></td><td>/evoucher</td></tr>
+</table>
+<figure><img src="img/01-landing-hero.jpg"><figcaption>Gambar 1. Halaman utama landing page, dengan tombol "Beli / Bayar" dan "Cara Beli &amp; Bayar".</figcaption></figure>
+<figure><img src="img/02-landing-bulanan.jpg"><figcaption>Gambar 1a. Paket bulanan (Bulanan 20 Mbps Rp 200.000 dan Bulanan 35 Mbps Rp 320.000), dengan tombol "Daftar &amp; Berlangganan" menuju Portal Pelanggan.</figcaption></figure>
+<figure><img src="img/03-landing-voucher.jpg"><figcaption>Gambar 2. Produk voucher beserta deskripsi dan harga Rupiah, dengan tombol "Beli Voucher" menuju Portal Pelanggan.</figcaption></figure>
+
+<h2 class="pb">4. Alur Checkout Voucher WiFi (E-Voucher)</h2>
+<ol class="steps">
+  <li>Di landing page, pembeli klik <strong>Beli Voucher</strong>. Halaman <code>gayatricorp.mixradius.com/evoucher</code> terbuka.</li>
+  <li>Pembeli memilih <strong>Seller/Agen: Tanjungpura Network</strong>, paket (HS-3K / HS-3D), jumlah, dan server.</li>
+  <li>Pembeli mengisi <strong>Nama Lengkap</strong> dan <strong>Nomor WhatsApp</strong> (email opsional), lalu menyetujui Syarat &amp; Ketentuan dan Kebijakan Privasi. Ringkasan total ditampilkan.</li>
+  <li>Klik <strong>Lanjut ke Pembayaran</strong>, lalu verifikasi nomor dengan <strong>OTP WhatsApp</strong> untuk mencegah penyalahgunaan.</li>
+  <li>Sistem membuat invoice Duitku dan mengarahkan pembeli ke <strong>halaman pembayaran Duitku</strong> untuk memilih metode: QRIS, Virtual Account (BCA, Mandiri, BNI, Maybank, dll.), E-Wallet, atau gerai retail.</li>
+  <li>Setelah dibayar, Duitku mengirim <strong>callback</strong> ke Mixradius. Transaksi ditandai lunas, lalu kode voucher dibuat otomatis, ditampilkan di halaman konfirmasi, dan dikirim ke WhatsApp pembeli.</li>
+</ol>
+<figure><img src="img/06-evoucher-form.jpg"><figcaption>Gambar 3. Form beli voucher: agen Tanjungpura Network, paket HS-3K, detail paket, dan data pembeli.</figcaption></figure>
+<figure><img src="img/07-evoucher-ringkasan.jpg"><figcaption>Gambar 4. Ringkasan total (Rp 3.000), persetujuan S&amp;K, dan tombol "Lanjut ke Pembayaran".</figcaption></figure>
+<figure><img src="img/08-evoucher-otp.jpg"><figcaption>Gambar 5. Verifikasi nomor WhatsApp dengan OTP sebelum diarahkan ke pembayaran Duitku.</figcaption></figure>
+<figure><img src="img/11-checkout-metode.jpg"><figcaption>Gambar 5a. Halaman checkout "Bayar Online via DUITKU": daftar metode pembayaran (VA, Convenience Store, E-Wallet, Scan QR) dan Order Detail (HS-3K, IDR 3.000, PENDING). Banner kuning adalah penanda mode Sandbox dari sistem.</figcaption></figure>
+<figure><img src="img/12-checkout-qris.jpg"><figcaption>Gambar 5b. Pembeli memilih metode QRIS ShopeePay, lalu klik "Bayar Sekarang".</figcaption></figure>
+<figure><img src="img/13-duitku-qris.jpg"><figcaption>Gambar 5c. Halaman pembayaran QRIS Duitku (sandbox.duitku.com) atas nama merchant "Tanjungpura Net", nominal Rp 3.000.</figcaption></figure>
+<figure><img src="img/15-duitku-success.jpg"><figcaption>Gambar 5d. Duitku menampilkan "SUCCESS", lalu pembeli otomatis diarahkan kembali ke Portal Pelanggan.</figcaption></figure>
+<figure><img src="img/16-mixradius-berhasil.jpg"><figcaption>Gambar 5e. Portal Pelanggan: "Pembayaran Berhasil", No. Transaksi Duitku, dan kode voucher yang langsung diterbitkan.</figcaption></figure>
+
+<h2 class="pb">5. Alur Paket Bulanan (Langganan Internet Rumah)</h2>
+<ol class="steps">
+  <li>Di landing page, pembeli klik <strong>Daftar &amp; Berlangganan</strong>. Halaman <code>gayatricorp.mixradius.com/register</code> terbuka.</li>
+  <li>Pembeli memilih tipe layanan <strong>PPP</strong>, penjual <strong>Tanjungpura Network</strong>, paket <strong>Bulanan 20 Mbps</strong> atau <strong>Bulanan 35 Mbps</strong>, lalu mengisi data diri dan alamat pemasangan.</li>
+  <li>Tim kami melakukan survei lokasi dan pemasangan. Pelanggan menerima akun Portal Pelanggan.</li>
+  <li>Setiap periode, sistem menerbitkan <strong>invoice</strong> dalam Rupiah. Pelanggan login di <code>gayatricorp.mixradius.com/login</code>, buka <strong>Tagihan</strong>, lalu klik <strong>Bayar</strong> untuk membayar melalui Duitku.</li>
+  <li>Callback Duitku menandai invoice lunas, dan masa aktif layanan otomatis diperpanjang.</li>
+</ol>
+<figure><img src="img/09-register.jpg"><figcaption>Gambar 6. Formulir pendaftaran pelanggan baru di Portal Pelanggan.</figcaption></figure>
+<figure><img src="img/04-landing-cara-bayar.jpg"><figcaption>Gambar 7. Bagian "Cara Membeli &amp; Membayar" di landing page.</figcaption></figure>
+
+<h2 class="pb">6. Konfigurasi Duitku di Sistem</h2>
+<table>
+  <tr><th style="width:35%">Parameter</th><th>Nilai</th></tr>
+  <tr><td>Gateway</td><td>Duitku (PRIMARY, aktif)</td></tr>
+  <tr><td>Environment</td><td>Sandbox (pindah ke Production setelah verifikasi disetujui)</td></tr>
+  <tr><td>Kode Merchant</td><td><code>DS36312</code> — proyek "Tanjungpura Net"</td></tr>
+  <tr><td>Website proyek</td><td>https://tanjungpuranet.itturbo.my.id</td></tr>
+  <tr><td>URL Callback</td><td><code>https://gayatricorp.mixradius.com/api/payment/callback/duitku</code></td></tr>
+  <tr><td>Channel aktif</td><td>Bank BCA, Bank Mandiri, Bank Maybank, Bank BNI, ATM Bersama, dan channel lain sesuai akun</td></tr>
+</table>
+<figure><img src="img/10-pg-reseller.jpg"><figcaption>Gambar 8. Pengaturan Payment Gateway akun Tanjungpura Network: Duitku PRIMARY, environment Sandbox.</figcaption></figure>
+
+<h2>7. Bukti Uji Transaksi Sandbox</h2>
+<div id="sandbox-proof" class="box info">
+  <p class="ok">BERHASIL — transaksi sandbox end-to-end pada 10 November 2026.</p>
+  <table>
+    <tr><th style="width:35%">Item</th><th>Nilai</th></tr>
+    <tr><td>Produk</td><td>Voucher HS-3K × 1 (agen Tanjungpura Network) — 1 hari, unlimited</td></tr>
+    <tr><td>Nominal</td><td>Rp 3.000</td></tr>
+    <tr><td>No. Order / Invoice (Mixradius)</td><td><code>VO-20261110142154-CD71</code> / <code>MXR-20261110142154-81D9BF</code></td></tr>
+    <tr><td>No. Transaksi (Duitku)</td><td><code>DS3631226JEUIH14HTZZJIXP</code></td></tr>
+    <tr><td>Referensi QRIS (Duitku)</td><td><code>SP26CSM00I4HBK2LGZX</code></td></tr>
+    <tr><td>Metode pembayaran</td><td>QRIS ShopeePay (Duitku Sandbox), dibayar melalui Demo Transaction Area Duitku</td></tr>
+    <tr><td>Waktu lunas</td><td>2026-11-10 14:23:57 WIB</td></tr>
+    <tr><td>Status</td><td><strong class="ok">Pembayaran Berhasil</strong>, kode voucher otomatis diterbitkan</td></tr>
+  </table>
+</div>
+<figure><img src="img/14-simulator-success.jpg"><figcaption>Gambar 8a. Simulasi pembayaran di Demo Transaction Area Duitku Sandbox: SHOPEEPAY QRIS, Rp 3.000, status SUCCESS.</figcaption></figure>
+
+<h2 class="pb">8. Kontak Usaha &amp; Kebijakan</h2>
+<figure><img src="img/05-landing-kontak.jpg"><figcaption>Gambar 9. Kontak support di halaman utama: email, telepon/hotline, WhatsApp, alamat usaha, dan jam operasional.</figcaption></figure>
+<p>Kebijakan tersedia di website:</p>
+<ul>
+  <li>Syarat &amp; Ketentuan: https://tanjungpuranet.itturbo.my.id/kebijakan.html#syarat</li>
+  <li>Kebijakan Pengembalian Dana (Refund): https://tanjungpuranet.itturbo.my.id/kebijakan.html#refund</li>
+  <li>Kebijakan Privasi: https://tanjungpuranet.itturbo.my.id/kebijakan.html#privasi</li>
+  <li>S&amp;K dan Privasi Portal Pelanggan: https://gayatricorp.mixradius.com/terms dan /privacy</li>
+</ul>
+
+<h2>Lampiran — Draf Email Balasan ke Duitku</h2>
+<div class="email">Yth. Tim Verifikasi Duitku,
+
+Terima kasih atas informasinya. Berikut update untuk akun wisnu18plus@gmail.com (Kode Merchant Sandbox: DS36312, website https://tanjungpuranet.itturbo.my.id/):
+
+1. Website terdaftar sudah aktif dan dapat diakses publik.
+2. Halaman utama menampilkan produk beserta deskripsi dan harga dalam Rupiah (bagian "Paket Internet": Bulanan 20 Mbps Rp 200.000/bulan, Bulanan 35 Mbps Rp 320.000/bulan, Voucher HS-3K Rp 3.000, Voucher HS-3D Rp 8.000).
+3. Email, nomor telepon, dan alamat usaha tercantum sebagai kontak support di halaman utama (bagian "Hubungi Kami" dan footer).
+4. Fitur checkout hingga pembayaran tersedia. Website kami adalah landing page; proses checkout dan pembayaran berjalan di Portal Pelanggan resmi kami https://gayatricorp.mixradius.com (sistem billing ISP kami). Tombol "Beli Voucher" mengarah ke https://gayatricorp.mixradius.com/evoucher, sedangkan "Daftar & Berlangganan" dan "Bayar Tagihan" mengarah ke /register dan /login. Langkahnya dijelaskan di bagian "Cara Membeli & Membayar" pada halaman utama.
+5. Portal Pelanggan sudah terintegrasi dengan Duitku Sandbox (kode merchant DS36312) dengan URL callback https://gayatricorp.mixradius.com/api/payment/callback/duitku. Kami sudah melakukan uji transaksi sandbox dengan hasil terlampir.
+
+Terlampir dokumen PDF berisi alur checkout dan pembayaran beserta tangkapan layar dan bukti uji transaksi sandbox.
+
+Terima kasih.
+
+Hormat kami,
+Ida Bagus Wisnu
+Tanjungpura Network
++62 813-4743-0125 · smartplayground777@gmail.com</div>
+
+</body>
+</html>

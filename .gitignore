@@ -1,11 +1,4 @@
-# Konfigurasi sensitif - jangan di-push ke repo publik
-config.json
-
-# Log Duitku callback
-logs/
-
 # OS & Editor
 .DS_Store
 Thumbs.db
 .vscode/
-
